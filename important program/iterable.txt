@@ -1,0 +1,188 @@
+-There are several ways to access elements of a Collection.
+ -The iterator could be an object implementing Iterator, ListIterator or Spliterator interface.
+-Interable(I):-
+	:-The Collection interface extends the Iterable interface and therefore all the subclasses of Collection 	 	   interface also implement the Iterable interface.
+	 -iterable (I) has three methods- 1:-forEach() 2:-iterator() 3:-spliterator()
+----------------------------------------------------------------------------------------------------------------------
+ -If you don’t want to modify the contents of collection or want to obtain the elements in reverse order, the For-   	 Each version is more convenient.
+
+1:-for each():-
+
+	package saturday;
+	import java.util.*;
+
+	class Student
+	{
+		private int rollnumuber;
+		private String name;
+		private float marks;
+		
+		public Student(int rollnumuber, String name, float marks) 
+		{
+			this.rollnumuber = rollnumuber;
+			this.name = name;
+			this.marks = marks;
+		}
+
+		@Override
+		public String toString() {
+			return "Student [rollnumuber=" + rollnumuber + ", name=" + name + ", marks=" + marks + "]";
+		}
+		
+	}
+	public class project1
+	{
+		public static void main(String str[])
+		{
+			List<Student> someList = new ArrayList<>();
+			someList.add(new Student(11,"Rohit",97)); 	
+			someList.add(new Student(12,"Akshay",99)); 	
+			someList.add(new Student(13,"Rajesh",93)); 		
+			someList.add(new Student(14,"Ranjeet",93));
+
+		for(Student s:someList)
+		{
+	    	 System.out.println(s);
+		}
+
+		}
+	}
+---------------------------------------------------------------------------------------------------------------------
+2:-iterator():-
+	-Iterator interface provides the facility of iterating the elements in a forward direction only. 
+	-Methods of Iterator interface:-
+	-public boolean hasNext().   public Object next()   public void remove()
+
+-----------------------------iterator example-------------------------------------------------------------------package m;
+import java.util.*;
+public class d
+{
+	public static void main(String str[])
+	{
+	   HashSet<String>hs=new HashSet<>();
+        hs.add("Rohit");
+        hs.add("Akshay");
+        hs.add("Shree");
+        hs.remove("Akshay");
+
+       Iterator <String> itr= hs.iterator();
+       while( itr.hasNext())
+       System.out.println(itr.next());
+       
+       
+    
+    
+    		Map<String,String> gfg = new HashMap<String,String>(); 
+    	
+    		gfg.put("GFG", "geeksforgeeks.org"); 
+    		gfg.put("Practice", "practice.geeksforgeeks.org"); 
+    		gfg.put("Code", "code.geeksforgeeks.org"); 
+    		gfg.put("Quiz", "quiz.geeksforgeeks.org"); 
+    		
+    		for (Map.Entry<String,String> entry : gfg.entrySet()) 
+    			
+    			System.out.println("Key = " + entry.getKey() + 
+    							", Value = " + entry.getValue()); 
+    
+}
+---------------------------------------------------------------------------------------------------------------------
+3:-Spliterator:-
+			- JDK 8 introduced the new type of iterator called Spliterator.
+			- Spliterator supports parallel programming. But, you can use Spliterator even if you don’t need   	                parallel execution.
+                - A Spliterator may traverse elements individually (tryAdvance()) or sequentially in bulk 		            (forEachRemaining()).
+			-Spliterator can be used with Streams in Java 8. Where as, Iterator is just used with Collection.
+			-Spliterator uses Internal Iteration to iterate Streams. Iterator uses External Iteration to iterate 				  Collections.
+			-Spliterator can iterate Streams in Parallel as well as Sequential manner. Iterator only iterates in 				 Sequential manner.
+			-Spliterator can traverse elements individually as well as in bulk. Iterator only iterates elements 			 individually.
+			-There are 2 main methods in the Spliterator interface.
+			- tryAdvance() and forEachRemaining()		
+               -With tryAdvance(), we can traverse underlying elements one by one (just like Iterator.next()).
+               -For sequential bulk traversal we can use forEachRemaining():
+  -----------------------------------------------------------------------------------------------------------------             
+		 package saturday;
+		import java.util.*;
+
+
+		public class project1
+		{
+			public static void main(String str[])
+			{
+				 List<String> countries = new ArrayList<String>();
+				   
+				   countries.add("Australia");
+				   countries.add("Canada");
+				   countries.add("India");
+				   countries.add("USA");
+				   
+				   System.out.println("\n\nUsing Spliteror tryAdvance() to loop through countries list");
+				   //Using Spliterator tryAdvance() to loop through countries list
+				   Spliterator<String> iter3 = countries.spliterator();
+				   while(iter3.tryAdvance(country -> System.out.print(country + " ")));
+				   
+				   System.out.println("\n\nUsing Spliteror forEachRemaining() to loop through countries list");
+				   //Using Spliterator forEachRemaining() to loop through countries list
+				   Spliterator<String> iter4 = countries.spliterator();
+				   iter4.forEachRemaining(country -> System.out.print(country + " "));
+			}
+		}
+-----------------------------------------------------------------------------------------------------------------------
+4:-List iterator:-
+      - ListIterator is available only in collections that implement the List interface.
+	 - A ListIterator gives us the ability to access the collection in either forward or backward direction and lets 		   you modify an element.
+ 	
+		package saturday;
+		import java.util.*;
+
+		class Student
+		{
+			private int rollnumuber;
+			private String name;
+			private float marks;
+			
+			public Student(int rollnumuber, String name, float marks) 
+			{
+				this.rollnumuber = rollnumuber;
+				this.name = name;
+				this.marks = marks;
+			}
+
+			@Override
+			public String toString() {
+				return "Student [rollnumuber=" + rollnumuber + ", name=" + name + ", marks=" + marks + "]";
+			}
+			
+		}
+		public class project1
+		{
+			public static void main(String str[])
+			{
+			    ListIterator<Student> litr = null;
+				List<Student> someList = new ArrayList<>();
+				someList.add(new Student(11,"Rohit",97)); 	
+				someList.add(new Student(12,"Akshay",99)); 	
+				someList.add(new Student(13,"Rajesh",93)); 		
+				someList.add(new Student(14,"Ranjeet",93));
+
+			    litr=someList.listIterator();
+			    System.out.println("Traversing the list in forward direction:");
+			    while(litr.hasNext())
+			    {
+				  System.out.println(litr.next());
+			    }
+			    System.out.println("\nTraversing the list in backward direction:");
+			    while(litr.hasPrevious())
+			    {
+				  System.out.println(litr.previous());
+			    }
+
+			}
+		}
+---------------------------------------------------------------------------------------------------------------------
+Enumration -
+
+  -Enumeration is used to traverse the legacy classes like Vector, Stack and HashTable.
+  - hasMoreElements() and nextElement() it not support remove method.
+  -Enumeration is fail-safe in nature. we can change at a time when iterate.
+  -Enumeration is not safe and secured due to it’s fail-safe nature.
+   -
+  -

@@ -1,0 +1,67 @@
+static and final method we cant override.
+inheritance:-is a relationship.
+
+-we write the all the common functionality in the parent class.lets Animal have common functionality is eat and sleep 
+so we write it in the base class and we inherit the base class in the tiger class dog class elephant class etc 
+we use the inheritance for the reusability purpose.
+
+-----------------------------------------------------------------------------------------------------------------------
+package saturday;
+
+class Animal
+{
+	void eat()
+	{
+		System.out.println("inside the Eat");
+	}
+	void sleep()
+	{
+		System.out.println("inside the Sleep");
+    }
+}
+class Dog extends Animal
+{
+	void eat()
+	{
+		System.out.println("inside the Dog");
+	}
+	void sleep()
+	{
+		System.out.println("inside the Dog");
+    }
+}
+
+class Lion extends Animal
+{
+	void eat()
+	{
+		System.out.println("inside the Lion");
+	}
+	void sleep()
+	{
+		System.out.println("inside the Lion");
+    }
+	void King()
+	{
+		System.out.println("inside the King");
+    }
+}
+
+public class project1 
+{
+   public static void main(String str[])
+   {
+	  Animal obj=new Lion(); //upcasting
+	  Lion obj1=(Lion)obj;
+	  obj1.King();
+   }
+}
+------------------------------------------------------------------------------------------------------------------------
+-On the basis of class, there can be three types of inheritance in java: (single, multilevel and hierarchical.)
+
+-In java programming, multiple and hybrid inheritance is supported through interface only. 
+
+-Why multiple inheritance is not supported in java?
+ To reduce the complexity and simplify the language, multiple inheritance is not supported in java. 
+----------------------------------------------------------------------------------------------------------------------
+

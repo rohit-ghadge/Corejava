@@ -1,0 +1,166 @@
+									 --array--
+-Normally, an array is a collection of similar type of elements which have a contiguous memory location.
+-It is a data structure where we store similar elements. We can store only a fixed set of elements in a Java array.
+-Array in Java is index-based, the first element of the array is stored at the 0th index, 2nd element is stored on 1st 	index and so on. 
+-Unlike C/C++, we can get the length of the array using the length member. In C/C++, we need to use the sizeof 		operator. 
+-Random access: We can get any data located at an index position.
+- (Size Limit:) We can store only the fixed size of elements in the array. It doesn't grow its size at runtime. To solve 	this problem, collection framework is used in Java which grows automatically.
+---------------------------------------------------------------------------------------------------------------------
+-Single Dimensional Array in Java
+ 	-int marks[]={ 88,77,89,54 };
+     -int marks[]=new int[5];
+		marks[0]=99;
+		marks[1]=87;
+----------------------------------------------------------------------------------------------------------------------
+		2D:-int matrix [][]= new int [row][col];
+----------------------------------------------------------------------------------------------------------------------
+								:Collection framework:
+
+Collection framework:-The Java Collections Framework is a collection of interfaces and classes which helps in storing 		and processing the data efficiently. 
+-it in the java.util package all the interface and classes;
+-It provides readymade architecture(data structures).
+-Collection interface:-
+-from Collection(I) three subinterfaces from form.
+   1:-List    2:-Set    3:-Queue
+----------------------------------------------------------------------------------------------------------------------
+                                            I:-List interface :-
+
+	-A List is an ordered Collection (sometimes called a sequence).
+	-Lists may contain duplicate elements.
+
+	-Elements can be inserted or accessed by their position in the list, using a zero-based index.
+	- List<String> countries = new ArrayList<>();
+	     countries.add("Canada");
+         countries.add("Australia"); 
+	     countries.add("India");
+	     countries.add("USA");
+	     System.out.println(countries.get(2));
+  -subtype are 1:-Arraylist 2:-Linkedlist and 3:-vector	 
+ 
+	ArrayList-10     -increse capacity by 50%.
+	Vector-10        -incease capacity by 100%.
+	HashSet-16
+	HashMap-16
+	HashTable-11
+	HashSet-16
+
+     
+----------------------------------------------------------------------------------------------------------------------
+1:-Arraylist:- 
+		  -Arraylist class implements List interface and it is based on an Array data structure.
+		  -ArrayList can dynamically grow and shrink.
+            
+   :- methods of the Arraylist:-
+
+      1:-add method.
+			obj.add("hello");
+
+	 2:-add specific.
+		  -To add the element at the specified location in ArrayList, we can specify the index in the add method 
+		  -ArrayList<String> alist=new ArrayList<String>();
+     	  -alist.add(3, "Steve");
+ 
+	 3: - we use the set method the update the element in the arraylist.
+		 - names.set(0, "Lucy");
+
+	 4:-   to remove steve from arraylist.
+		  - alist.remove("Steve"); 
+
+      5:-We can use size() method of ArrayList to find the number of elements in an ArrayList.
+           -countries.size().
+
+	 6:--Collections.sort(countries);use for the sorting arraylist.
+
+	 7:-int pos = obj.indexOf("Tom"); if not found it return -1;found then index return.
+
+	 8:- -String str= obj.get(2); get specific value.
+
+      9:- -obj.contains("Steve");It would return true if the string “Steve” is present in list.
+
+	 10:-obj.clear(); it will remove all the element from the list.
+---------------------------------------------------------------------------------------------------------------------
+2:-Vector:-
+       -ArrayList and Vector both use Array as a data structure internally. 
+	  -ArrayList is Asynchronised which means multiple threads can work on ArrayList at the same time.
+	  -while Vector is synchronized. This means if one thread is working on Vector, no other thread can get a hold   		   of it.
+	 -ArrayList grow by half of its size when resized while Vector doubles the size of itself by default when grows.
+	 -Vector operations gives poor performance as they are thread-safe, the thread which works on Vector gets a lock 		  on it which makes other thread wait till the lock is released.
+
+   -Stack 
+	    -The stack is the subclass of Vector.
+	    -It implements the last-in-first-out data structure.
+	    -The stack contains all of the methods of Vector class and also provides its methods like boolean push(), 	     boolean peek(), boolean pop(object o), which defines its properties.
+	    -    
+--------------------------------------------------------------------------------------------------------------------
+                        fail safe vs fail fast iterator in java
+	 -Using iterations we can traverse over the collections objects. The iterators can be either fail-safe or fail-  		  fast. 
+      -Fail-safe iterators means they will not throw any exception even if the collection is modified while iterating 		  over it.
+
+	 -Whereas Fail-fast iterators throw an exception(ConcurrentModificationException) if the collection is modified 	    while iterating over it.
+
+	 -How to make ArrayList synchronized?
+      -List list = Collections.synchronizedList(new ArrayList());
+      
+      -java.util.Vector came along with the first version of java development kit (JDK).
+	 - java.util.ArrayList was introduced in java version1.2.
+-------------------------------------------------------------------------------------------------------------------
+3:- Linked list:-
+
+         -LinkedList implements the Collection interface.
+	    -It uses a doubly linked list internally to store the elements. 
+	    -It can store the duplicate elements.
+	    -maintains the insertion order and is Asynchronized
+		
+---------------------------------------------------------------------------------------------------------------------
+									II-Set Interface
+	-set has two interface 1-HashSet 2-LinkedHashSet and one interface 1-SortedSet Interface (TreeSet class)
+	-it store the unorderd element.
+	-it dosent allow to store the dublicate element.
+---------------------------------------------------------------------------------------------------------------------
+	1-HashSet:-
+	 -HashSet class implements Set Interface.
+	 -It represents the collection that uses a hash table for storage.
+	 -Hashing is used to store the elements in the HashSet. It contains unique items.
+---------------------------------------------------------------------------------------------------------------------
+	2-LinkedHashSet :-
+	-LinkedHashSet class represents the LinkedList implementation of Set Interface.
+	-It maintains the insertion order and permits null elements.
+	-
+------------------------------------------------------------------------------------------------------------------
+	3:-SortedSet Interface:-
+	-SortedSet is the alternate of Set interface that provides a total ordering on its elements. The elements of 		the SortedSet are arranged in the increasing (ascending) order. The SortedSet provides the additional methods 	that inhibit the natural ordering of the elements.
+
+	- TreeSet(class):-
+	- The elements in TreeSet stored in ascending order.
+	- Java TreeSet class implements the Set interface that uses a tree for storage.
+	-Like HashSet, TreeSet also contains unique elements. However, the access and retrieval time of TreeSet is quite 		 fast.
+----------------------------------------------------------------------------------------------------------------------
+								3:-Queue Interface
+     -Queue interface maintains the first-in-first-out order.
+	-A Queue is designed in such a way so that the elements added to it are placed at the end of Queue and removed 	  from the beginning of Queue.
+	-Queue interface in Java collections has two implementation: I:- LinkedList and II:- PriorityQueue, these two classes 		 Queue interface.
+
+	 I-Queue methods :-
+
+	   1-element():-
+        -Retrieves, but does not remove, the head of this queue.
+	  
+	   2-offer(E):-Queue<Integer> Q = new LinkedBlockingQueue<Integer>(3); 
+	   -Inserts the specified element into this queue if it is possible to do so immediately without violating 		    capacity restrictions.if full then false return.
+	   
+	   3-peek():-
+		Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+
+	   4:-poll():-
+		Retrieves and removes the head of this queue, or returns null if this queue is empty.
+
+	   5:-remove():-
+		Retrieves and removes the head of this queue.
+
+	:priorities queqe:-
+	- It holds the elements or objects which are to be processed by their priorities.
+	-PriorityQueue doesn't allow null values to be stored in the queue.
+	-The objects of the priority queue are ordered by default in natural order.
+	--------------------------------------------------------------------------------------------------------
+
+

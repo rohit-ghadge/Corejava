@@ -1,0 +1,83 @@
+abstract class and abstract method:-
+
+	-it is used to declare common charactertics of the class.
+	-we cant create the object of the abstract class.
+	-because it is incomplete class developer dont want to create object accedently.
+	-abstract class can have abstract method as well as concreae method.
+	-abstract method has no body.
+
+     -if class is abstract then it is not mandatory to it have abstract method.
+      but if the method inside class is abstract then class must be abstract.
+
+     -why we use abstract class:-
+     -lets say a Animal class has abstract method sound and eat.Animal class has subclasses like a Dog,Tiger,Elephant
+      Since the animal sound differs from one animal to another, there is no point to implement this method in parent 		 class.This is because every child class must override this method to give its own implementation details, like 		 Lion class will say “Roar” in this method and Dog class will say “Woof”.
+
+	-So when we know that all the animal child classes will and should override this method, then there is no point 		 to implement this method in parent class. Thus, making this method abstract would be the good choice as by    	  making this method abstract we force all the sub classes to implement this method( otherwise you will get 		 compilation error), also we need not to give any implementation to this method in parent class.
+     
+     -Since the Animal class has an abstract method, you must need to declare this class abstract.
+     -example of the abstract class.
+
+     -You should make a parent class abstract when you don’t intend for it to be
+	created. What is an animal? In this case you don’t intend to create an
+	Animal​ object; you’re only going to be creating tangible animals like
+	tigers, dogs and gorillas. That’s when you should make a class abstract.
+	When you only intend to use its children in your program.
+-----------------------------------------------------------------------------------------------------------------------
+			package saturday;
+
+			abstract class Animal
+			{
+				abstract void Sound();
+				abstract void Sleep();
+			}
+			class Cat extends Animal
+			{
+				void Sound()
+				{
+				 System.out.println("cat sound is meow");
+				}
+				void Sleep()
+				{
+				 System.out.println("Elephant is sleeping");
+				}
+				void fun()
+				{
+				 System.out.println("i am fun");
+				}
+			}
+
+			class Lion extends Animal
+			{
+				void Sound()
+				{
+				 System.out.println("lion is sound roar");
+				}
+				void Sleep()
+				{
+				 System.out.println("lion is sleeping");
+				}
+				
+						}
+
+			public class project1
+			{
+
+				public static void main(String[] args) 
+				{
+					Animal obj1 = new Cat();
+					Cat obj2=(Cat)obj1;
+					obj2.fun();	
+				}
+
+			}
+----------------------------------------------------------------------------------------------------------------------
+         -If a child does not implement all the abstract methods of abstract parent class, then the child class must 			need to be declared abstract as well.
+	    
+         -Since abstract class allows concrete methods as well, it does not provide 100% abstraction. You can say that 			it provides partial abstraction. Abstraction is a process where you show only “relevant” data and “hide” 		unnecessary details of an object from the user.
+
+		-Interfaces on the other hand are used for 100% abstraction.
+		
+		-Why can’t we create the object of an abstract class?
+		-Because these classes are incomplete, they have abstract methods that have no body.
+-----------------------------------------end--------------------------------------------------------------------------

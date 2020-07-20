@@ -1,0 +1,55 @@
+static keyword in java:
+
+		: static is class level we call without creating class object.
+          
+we can use with 4 diffrant ways:-
+   1 Static Block :-
+				-if you need to  initialize your static variables,we can put into the static block.
+				-static block that gets executed exactly once, when the class is first loaded.
+				-You can not declare varibale as static inside a method.
+				-Inside method all variables are local variables.
+.
+   2 Static Variable :-
+				:-When you declare a variable as static, then a single copy of the variable is created and divided 					 among all objects at the class level.
+				:-Static members (variables or methods) are called class members, meaning they reside where the 					 class (bytecode) resides, which is in the Code Segment.
+				-local variable(stack section) and object type(heap section).
+
+   3 Static Method :-
+				-When a method is declared with the static keyword, it is known as a static method. The most 					 common example of a static method is the main( ) method.
+				-They can directly call other static methods only.
+				-They can access static data directly.
+				-we CANT override the static method because it is common in all the object.
+				-but we can access it by using class name Demo.show(); (Demo is class name)
+				-You can not declare varibale as static inside a method.
+				-The static method can not use non static data member.
+
+   4 Static Classes :-
+				-In Java, only nested classes can be declared as static classes.
+				-If we attempt to declare a top-level class as a static class, we will get an error. 
+				-Static classes can only access static members of an outer class.
+				- while non-static nested classes can interact with both static and non-static members of an outer 					 class.
+				-You can create an object for the static class only by accessing it through the outer class (which 					 is true for all nested classes).
+------------------------------------------------------------------------------------------------------------------------
+					package saturday;
+					class A
+					{
+						static String s="Akshay";
+						static class  B
+						{
+							   void fun()
+							   {
+								 System.out.println("hi "+s);
+							   }
+						}
+					}
+					public class project1
+					{
+					   public static void main(String str[])
+					   {
+						   A.B obj_inner = new A.B();
+						   obj_inner.fun();
+					   }
+					}
+-----------------------------------------------------------------------------------------------------------------------
+				-If we think the outer class is too limiting and we want a member class to perform more functions, 					 we use the “static” keyword to provide that added functionality.
+				-

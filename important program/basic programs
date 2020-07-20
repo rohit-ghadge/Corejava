@@ -1,0 +1,69 @@
+to find the duplicate element of the array 
+
+int arr []= {11,12,12,13,14,13};
+		for(int i=0;i<arr.length;i++)
+		{
+		   for(int j=i+1;j<arr.length;j++)
+		   {
+			   if(arr[i]==arr[j])
+			   {
+				   System.out.println("duplicate element is "+arr[j]);
+			   }
+		   }
+		}
+-----------------------------------------------------------------------------------------------------------------------to print the unique element of the array 
+
+int arr []= { 11,12,13,12,13,13,15,13 };
+		int j;
+		System.out.println("unique element of the array is ");
+
+		for(int i=0;i<arr.length;i++)
+		{
+			for( j=0;j<arr.length;j++)
+			{
+				if(arr[i]==arr[j])
+				{
+					break;
+				}
+			}
+			if(i==j)
+			{
+				System.out.println(arr[j]);
+			}
+		}
+-----------------------------------------------------------------------------------------------------------------------
+
+#include<iostream>                  --upcasting means in the base class pointer we save the object of the derived class
+using namespace std;                --then if we dont use the virtual keyword then it will do early binging and call
+                                    -- on the type of the pointer and base class method call.
+class Base                           
+{                                     when we use virtual keyword th				cout<<"";
+eyn late binding do we achive run time polymorphism
+public:                               then it will call on type of the object not on the type of the pointer
+
+	// non-virtual by default       virtual keyword is we use to do late binding. in late binding method is called de
+	virtual void show()             -pen on the type of the object not on the type of the pointer type.
+	{
+		cout<<"Base::show() called";
+	}
+};
+
+class Derived: public Base
+{
+public:
+	void show()
+	{
+		cout<<"Derived::show() called";
+	}
+};
+
+int main()
+{
+	Base *bp;
+	Derived d;
+	bp=&d;
+	bp->show();
+	return 0;
+}
+-----------------------------------------------------------------------------------------------------------------------
+

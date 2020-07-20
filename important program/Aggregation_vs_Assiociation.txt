@@ -1,0 +1,124 @@
+Association has two types:-
+
+
+ Aggregation represents HAS-A relationship. 
+
+ :-Consider a situation, Employee object contains many informations such as id, name, emailId etc. It contains one 	more object named address, which contains its own informations such as city, state, country, zipcode etc. as 		given below. 
+
+ :- Why use Aggregation?
+  - For Code Reusability.
+-----------------------------------------------------------------------------------------------------------------------
+	:-Aggregation and Composition are subsets of association meaning they are specific cases of association. 
+
+	:-Aggregation implies a relationship where the child can exist independently of the parent. Example: Class 		 (parent) and Student (child). Delete the Class and the Students still exist.
+	-room has a chair.
+
+	:-Composition implies a relationship where the child cannot exist independent of the parent. Example: House 		  (parent) and Room (child). Rooms don't exist separate to a House.
+      -if we delete home class then room also deleted.
+	 -man has a heart.
+----------------------------------------------------------------------------------------------------------------------
+ Aggregation(weak bond):-With aggregation, the Car also performs its functions through an Engine, but the Engine is 			not always an internal part of the Car. Engines may be swapped, or even completely removed. Not only that, 			but the outside world can still have a reference to the Engine, and tinker with it regardless of whether 		it's in the Car. 
+-------------------------------Aggregation_example--------------------------------------------------------------------
+		package saturday;
+
+		class Car
+		{
+			  private String name;
+			  private Engine e;
+			  public Car(String name,Engine e) 
+			  {
+				  this.name=name;
+				  this.e=e;
+			  }
+			@Override
+			public String toString() {
+				return "Car information is \n"+"name=" + name + ", " + e + "";
+			}
+			  
+			  
+		}
+
+		class Engine
+		{
+			private int engineid;
+			private String enginename;
+			private String enginecolor;
+			Engine(int engineid,String enginename,String enginecolor)
+			{
+				this.engineid=engineid;
+				this.enginename=enginename;
+				this.enginecolor=enginecolor;
+			}
+			@Override
+			public String toString() {
+				return "engineid=" + engineid + ", enginename=" + enginename + ", enginecolor=" + enginecolor + " ";
+			}
+			
+		}
+		public class project1
+		{
+			public static void main(String str[])
+			{
+				Engine e= new Engine(100, "B111","black");
+				Car c=new Car("Bugati",e);
+				System.out.println(c);
+			}
+			
+		}
+-----------------------------------------------------------------------------------------------------------------------
+
+Composition:-In the case of composition, the Birthdate is completely encapsulated by the Person. There is no way for (strong bond)		outside world to get a reference to the Birthdath. The Birthday lives and dies with the Person.
+
+-----------------------------------------example of the composition--------------------------------------------package saturday;
+
+		class Person
+		{
+			private double salary;
+		    private String name;
+		    private Birthday bday;
+		    
+			public Person(double salary, String name, int year,int month,int day) 
+			{
+				this.salary = salary;
+				this.name = name;
+				this.bday = new Birthday(year,month,day);
+			}
+				
+				@Override
+			public String toString() 
+			{
+				return "Person [salary=" + salary + ", name=" + name + ", bday=" + bday + "]";
+			}
+
+				class Birthday
+				{
+						   int year,month,day;
+				
+						   public Birthday(int y,int m,int d)
+						   {
+							  year=y;
+							  month=m;
+							  day=d;
+						   }
+				
+						   public String toString()
+						   {
+							 return String.format("%s-%s-%s", year,month,day);
+				
+						   }
+					   
+				}
+				    
+		}
+
+		public class project1
+		{
+			public static void main(String str[])
+			{
+			   Person person=new Person(50000, "Rohit", 2020, 18,22);
+			   System.out.println(person);
+			}
+			
+		}
+
+----------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,146 @@
+### joins:-
+
+* create table Student(SID int,Sname varchar(20),PRIMARY KEY(SID));
+
+* insert into Student values(100,"Rohit");
+
+* select * from Student;
++-----+---------+
+| SID | Sname   |
++-----+---------+
+| 100 | Rohit   |
+| 200 | Akshay  |
+| 300 | Rajesh  |
+| 400 | Ranjeet |
+| 500 | Shree   |
++-----+---------+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+*  create table Laptop(LID int,LName varchar(20),SID int,PRIMARY KEY(LID),FOREIGN KEY(SID) REFERENCES Student(SID));
+
+*  insert into Laptop values(14,"Dell",500);
+
+* select * from Laptop;
++-----+-------+------+
+| LID | LName | SID  |
++-----+-------+------+
+|  11 | Apple |  100 |
+|  12 | SONY  |  400 |
+|  13 | HP    |  100 |
+|  14 | Dell  |  500 |
++-----+-------+------+
+
+----------------------------------------------------------------------------------------------------------------------
+                                         INNER JOIN
+*  select l.LName,s.Sname from Laptop l INNER JOIN Student s ON(l.SID=s.SID);
+
+* +-------+---------+
+| LName | Sname   |
++-------+---------+
+| Apple | Rohit   |
+| SONY  | Ranjeet |
+| HP    | Rohit   |
+| Dell  | Shree   |
++-------+---------+
+----------------------------------------------------------------------------------------------------------------------
+
+* CROSS JOIN :-
+
+* select l.LName,s.Sname from Laptop l CROSS JOIN Student s;
++-------+---------+
+| LName | Sname   |
++-------+---------+
+| Apple | Rohit   |
+| SONY  | Rohit   |
+| HP    | Rohit   |
+| Dell  | Rohit   |
+| Apple | Akshay  |
+| SONY  | Akshay  |
+| HP    | Akshay  |
+| Dell  | Akshay  |
+| Apple | Rajesh  |
+| SONY  | Rajesh  |
+| HP    | Rajesh  |
+| Dell  | Rajesh  |
+| Apple | Ranjeet |
+| SONY  | Ranjeet |
+| HP    | Ranjeet |
+| Dell  | Ranjeet |
+| Apple | Shree   |
+| SONY  | Shree   |
+| HP    | Shree   |
+| Dell  | Shree   |
++-------+---------+
+----------------------------------------------------------------------------------------------------------------------
+* LEFT OUTER JOIN :-
+
+* select * from Laptop l LEFT OUTER JOIN Student s ON(l.SID=s.SID);
+
++-----+-------+------+------+---------+
+| LID | LName | SID  | SID  | Sname   |
++-----+-------+------+------+---------+
+|  11 | Apple |  100 |  100 | Rohit   |
+|  12 | SONY  |  400 |  400 | Ranjeet |
+|  13 | HP    |  100 |  100 | Rohit   |
+|  14 | Dell  |  500 |  500 | Shree   |
++-----+-------+------+------+---------+
+
+-----------------------------------------------------------------------------------------------------------------------
+* RIGHT OUTER JOIN :-
+
+* select * from Laptop l RIGHT OUTER JOIN Student s ON(l.SID=s.SID);
++------+-------+------+-----+---------+
+| LID  | LName | SID  | SID | Sname   |
++------+-------+------+-----+---------+
+|   11 | Apple |  100 | 100 | Rohit   |
+|   13 | HP    |  100 | 100 | Rohit   |
+| NULL | NULL  | NULL | 200 | Akshay  |
+| NULL | NULL  | NULL | 300 | Rajesh  |
+|   12 | SONY  |  400 | 400 | Ranjeet |
+|   14 | Dell  |  500 | 500 | Shree   |
++------+-------+------+-----+---------+
+----------------------------------------------------------------------------------------------------------------------
+* FULL OUTER JOIN:-
+
+* You don't have FULL OUTER JOINS on MySQL, but you can sure emulate them.
+                                            
+* select * from Laptop l LEFT OUTER JOIN  Student s ON(l.SID=s.SID);
+
+* The UNION operator is used to combine the result-set of two or more SELECT statements.
+* Each SELECT statement within UNION must have the same number of columns.
+* The columns must also have similar data types.
+
+*  select * from Laptop l LEFT OUTER JOIN  Student s ON(l.SID=s.SID) UNION select * from Laptop l RIGHT OUTER JOIN 
+   Student s ON(l.SID=s.SID);
+---------------------------------------------------------------------------------------------------------------------
+* GROUP BY :-
+
+* SELECT * from Population;
++-----+--------+------+-------+
+| RID | CName  | Year | pop   |
++-----+--------+------+-------+
+| 100 | MUMBAI | 2018 | 21000 |
+| 200 | MUMBAI | 2019 | 25000 |
+| 300 | MUMBAI | 2020 | 25000 |
+| 400 | PUNE   | 2020 | 30000 |
+| 500 | PUNE   | 2019 | 40000 |
+| 600 | PUNE   | 2018 | 35000 |
+| 700 | SATARA | 2018 | 60000 |
+| 800 | SATARA | 2019 | 50000 |
+| 900 | SATARA | 2020 | 70000 |
++-----+--------+------+-------+
+
+* select CName, AVG(pop) from Population GROUP BY CName having CName="MUMBAI";
+-----------------------------------------------------------------------------------------------------------------------
+* backup the database :-
+
+* mysqldump -u root -p dacproject > bacup.sql
+
+---------------------------------------------------------------------------------------------------------------------
+* PRIMARY KEY=UNIQUE KEY + NULL;
+* create table emp(EmpID int PRIMARY KEY,EName varchar(20));
+---------------------------------------------------------------------------------------------------------------------
+* 
+* create table emp(EmpID int ,EName varchar(20),UNIQUE KEY(EmpID), CHECK (EmpID>=300));
+-------------------------------------------------------------------------------------------------------------------

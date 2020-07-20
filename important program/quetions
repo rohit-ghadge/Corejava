@@ -1,0 +1,22 @@
+add the sum the population of mumbai record
+how to sort the set<student> (student=id,name,address)
+upcastig downcasting
+print all the record who start with the u
+ the * pattern
+string manipulation
+array program
+normlization of the table
+how to write exception handling class
+map interface collecion framwork
+what is the diffrance between implements by Runnable interface and extends from thred class.
+
+what diffrance between compilation process  of the cpp and java. The compiler in C++ converts source code into machine level language which makes C++ a platform-dependent language.In Java, java source code is first converted into bytecode at the time of compilation. thats makes java platform indepent language.cpp not support thred.java supports thred 
+what is jdk jre jvm
+access specifier in java
+
+* for every servlet web container create web.configue file
+servler context create onces per application.for every servlet web container create servlet configue object.after creating servlet object web container call init method. by using get servlet configue we get configue object
+
+* servlet lifecycle -client send request by using browser.at very first request survlet object is created.to initilize the servlet object web container call init method.after that service method get called.after that to destory service method object we called destroy method. 
+what is diffrannce between iterable and interator 
+https://javarevisited.blogspot.com/2012/02/why-wait-notify-and-notifyall-is.html
